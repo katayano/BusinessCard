@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,9 +20,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.businesscard.ui.theme.BusinessCardTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,8 +55,16 @@ fun BusinessCard(name: String, modifier: Modifier = Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val image = painterResource(R.drawable.android_logo)
+        Profile(
+            image = image,
+            name = name,
+            position = "Android Developer",
+            modifier = Modifier.weight(3f)
+        )
+
         Column(
-            modifier = Modifier
+            modifier = Modifier.weight(1f)
         ) {
             ContactInfo(
                 icon = Icons.Rounded.Call,
@@ -66,11 +80,35 @@ fun BusinessCard(name: String, modifier: Modifier = Modifier) {
             )
         }
     }
-
 }
 
 @Composable
-fun ContactInfo(icon: ImageVector, info: String) {
+fun Profile(image: Painter, name: String, position: String, modifier: Modifier = Modifier) {
+    Column(
+        modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        Text(
+            text = name,
+            fontSize = 64.sp,
+            modifier = Modifier.padding(top = 8.dp)
+        )
+        Text(
+            text = position,
+            color = Color(0xFF3DDC84),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 8.dp)
+        )
+    }
+}
+
+@Composable
+fun ContactInfo(icon: ImageVector, info: String, modifier: Modifier = Modifier) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
