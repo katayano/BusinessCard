@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -60,7 +61,7 @@ fun BusinessCard(name: String, modifier: Modifier = Modifier) {
             image = image,
             name = name,
             position = "Android Developer",
-            modifier = Modifier.weight(3f)
+            modifier = Modifier.weight(4f)
         )
 
         Column(
@@ -85,7 +86,7 @@ fun BusinessCard(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun Profile(image: Painter, name: String, position: String, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier,
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -110,15 +111,16 @@ fun Profile(image: Painter, name: String, position: String, modifier: Modifier =
 @Composable
 fun ContactInfo(icon: ImageVector, info: String, modifier: Modifier = Modifier) {
     Row(
-        modifier = Modifier.padding(8.dp)
+        modifier = modifier.padding(8.dp)
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null
+            contentDescription = null,
+            tint = Color(0xFF3DDC84)
         )
         Text(
             text = info,
-            modifier = Modifier.padding(start = 8.dp)
+            modifier = Modifier.padding(start = 24.dp)
         )
     }
 }
