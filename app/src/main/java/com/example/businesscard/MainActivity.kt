@@ -69,14 +69,17 @@ fun BusinessCard(name: String, modifier: Modifier = Modifier) {
         ) {
             ContactInfo(
                 icon = Icons.Rounded.Call,
+                description = "Phone number",
                 info = "012-345-6789"
             )
             ContactInfo(
                 icon = Icons.Rounded.Share,
+                description = "Account",
                 info = "@AndroidDev"
             )
             ContactInfo(
                 icon = Icons.Rounded.Email,
+                description = "Email address",
                 info = "example@android.com"
             )
         }
@@ -109,13 +112,13 @@ fun Profile(image: Painter, name: String, position: String, modifier: Modifier =
 }
 
 @Composable
-fun ContactInfo(icon: ImageVector, info: String, modifier: Modifier = Modifier) {
+fun ContactInfo(icon: ImageVector, description: String, info: String, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier.padding(8.dp)
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null,
+            contentDescription = description,
             tint = Color(0xFF3DDC84)
         )
         Text(
@@ -139,6 +142,7 @@ fun ContactInfoPreview() {
     BusinessCardTheme {
         ContactInfo(
             icon = Icons.Rounded.Call,
+            description = "Phone number",
             info = "012-345-6789"
         )
     }
